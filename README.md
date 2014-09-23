@@ -4,6 +4,8 @@ AnyFS is an abstraction of local or remote file systems.
 
 ## Basic API
 
+### `constructor(options)`
+
 ### `metadata(path, callback)`
 
 ### `mkdir(path, callback)`
@@ -21,6 +23,8 @@ AnyFS is an abstraction of local or remote file systems.
 ### `createReadStream(path, options)`
 
 ## Advanced API
+
+### `glob(pattern, callback)`
 
 ### `src(pattern, options)`
 
@@ -43,3 +47,14 @@ AnyFS is an abstraction of local or remote file systems.
 ### `_createWriteStream(path, options)`
 
 ### `_createReadStream(path, options)`
+
+## Tests
+
+AnyFS implements should pass the tests under `anyfs/test.js`
+
+```js
+var MyFS = require('MyFS');
+var fs = new MyFS();
+var test = require('anyfs/test');
+test(fs);
+```

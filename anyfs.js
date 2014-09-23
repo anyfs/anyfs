@@ -1,5 +1,6 @@
 'use strict';
 
+var inherits = require('util').inherits;
 var AnyFSError = require('./error');
 
 function notImplemented(method) {
@@ -175,3 +176,22 @@ AnyFS.prototype.src = function() {
 AnyFS.prototype.dest = function() {
     
 };
+
+// Global helpers
+AnyFS.inherits = function(init) {
+    function FS(options) {
+        this.options = options || {};
+
+        if (typeof this.options.mode === 'string') {
+            this.options.mode = parseInt(this.options.mode, 8);
+        }
+
+        if (typeof init === 'function') {
+            init.apply(this);
+        }
+    }
+
+    inherits(FS, AnyFS);
+
+    return FS;
+}
