@@ -182,12 +182,13 @@ AnyFS.inherits = function(init) {
     function FS(options) {
         this.options = options || {};
 
-        if (typeof this.options.mode === 'string') {
-            this.options.mode = parseInt(this.options.mode, 8);
-        }
-
         if (typeof init === 'function') {
             init.apply(this);
+        }
+
+        // default cwd
+        if (!this.options.hasOwnProperty('cwd')) {
+            this.options.cwd = '/';
         }
     }
 

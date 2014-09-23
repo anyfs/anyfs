@@ -48,6 +48,12 @@ AnyFS is an abstraction of local or remote file systems.
 
 ### `_createReadStream(path, options)`
 
+## Error Codes
+
+ELOGIC: Action not taken because it might break file system logic.
+
+ESYSTEM: Action not taken due to system problems.
+
 ## Tests
 
 AnyFS implements should pass the tests under `anyfs/test.js`
