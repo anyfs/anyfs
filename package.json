@@ -1,0 +1,23 @@
+{
+  "name": "anyfs",
+  "version": "0.1.0",
+  "description": "AnyFS is an abstraction of local or remote file systems.",
+  "main": "anyfs.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/anyfs/anyfs.git"
+  },
+  "keywords": [
+    "anyfs",
+    "gulpplugin",
+    "fs"
+  ],
+  "author": "dong <ddliuhb@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anyfs/anyfs/issues"
+  }
+}
