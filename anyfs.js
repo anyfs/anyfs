@@ -3,7 +3,7 @@
 var inherits = require('util').inherits;
 var AnyFSError = require('./error');
 var NotImplementedError = AnyFSError.NotImplementedError;
-var streamBuffers = require('stream-buffers');
+var streamContent = require('stream-content');
 
 function AnyFS(options) {
     this.options = options || {};
@@ -146,13 +146,7 @@ AnyFS.prototype.readFile = function(p, options, cb) {
     } catch (e) {
         if (e instanceof NotImplementedError) {
             var s = this._createReadStream(p, options);
-            var streamError;
-            var buffer = [];
-            s.on('data', function() {
-                
-            })
-            s.resume();
-
+            streamContent.readAll(s, options.encoding, cb);
         } else {
             throw e;
         }
@@ -176,7 +170,16 @@ AnyFS.prototype.writeFile = function(p, data, options, cb) {
 };
 
 AnyFS.prototype.createReadStream = function(p, options) {
-    
+    p = this.resolve(p);
+    options = options || {};
+
+    try {
+        return this._createReadStream(p, options);
+    } catch (e) {
+        if (e instanceof NotImplementedError) {
+            return streamContent.createReadStream()
+        }
+    }
 };
 
 AnyFS.prototype.createWriteStream = function(p, options) {
