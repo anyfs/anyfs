@@ -19,5 +19,8 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/anyfs/anyfs/issues"
+  },
+  "dependencies": {
+    "stream-buffers": "~1.0.0"
   }
 }

@@ -2,10 +2,8 @@
 
 var inherits = require('util').inherits;
 var AnyFSError = require('./error');
-
-function notImplemented(method) {
-    return new AnyFSError('Method not implemented: ' + method);
-}
+var NotImplementedError = AnyFSError.NotImplementedError;
+var streamBuffers = require('stream-buffers');
 
 function AnyFS(options) {
     this.options = options || {};
@@ -36,39 +34,39 @@ AnyFS.prototype._promise = function() {
 
 // File API implements
 AnyFS.prototype._rename = function(oldPath, newPath, cb) {
-    throw notImplemented('_rename');
+    throw new NotImplementedError('_rename');
 };
 
-AnyFS.prototype._metadata = function(p, cb) {
-    throw notImplemented('_metadata');
+AnyFS.prototype._metadata = function(p, options, cb) {
+    throw new NotImplementedError('_metadata');
 };
 
 AnyFS.prototype._unlink = function(p, cb) {
-    throw notImplemented('_unlink')
+    throw new NotImplementedError('_unlink')
 };
 
 AnyFS.prototype._rmdir = function(p, cb) {
-    throw notImplemented('_rmdir');
+    throw new NotImplementedError('_rmdir');
 };
 
 AnyFS.prototype._mkdir = function(p, cb) {
-    throw notImplemented('_mkdir');
+    throw new NotImplementedError('_mkdir');
 };
 
 AnyFS.prototype._readfile = function(p, options, cb) {
-    throw notImplemented('_readfile');
+    throw new NotImplementedError('_readfile');
 };
 
 AnyFS.prototype._writeFile = function(p, contents, cb) {
-    throw notImplemented('_writeFile');
+    throw new NotImplementedError('_writeFile');
 };
 
 AnyFS.prototype._createWriteStream = function(p, options) {
-    throw notImplemented('_createWriteStream');
+    throw new NotImplementedError('_createWriteStream');
 };
 
 AnyFS.prototype._createReadStream = function(p, options) {
-    throw notImplemented('_createReadStream');
+    throw new NotImplementedError('_createReadStream');
 };
 
 // File API
@@ -84,14 +82,20 @@ AnyFS.prototype.rename = function(oldPath, newPath, cb) {
     this._rename(oldPath, newPath, cb);
 };
 
-AnyFS.prototype.metadata = function(p, cb) {
+AnyFS.prototype.metadata = function(p, options, cb) {
+    if (typeof options === 'function') {
+        cb = options;
+        options = undefined;
+    }
+
     if (!cb) {
         return this._promise(this.metadata, p);
     }
 
+    options = options || {};
     p = this.resolve(p);
 
-    this._metadata(p, cb);
+    this._metadata(p, options, cb);
 };
 
 AnyFS.prototype.unlink = function(p, cb) {
@@ -137,23 +141,38 @@ AnyFS.prototype.readFile = function(p, options, cb) {
     options = options || {};
     p = this.resolve(p);
 
-    this._readfile(p, options, cb);
+    try {
+        this._readfile(p, options, cb);
+    } catch (e) {
+        if (e instanceof NotImplementedError) {
+            var s = this._createReadStream(p, options);
+            var streamError;
+            var buffer = [];
+            s.on('data', function() {
+                
+            })
+            s.resume();
+
+        } else {
+            throw e;
+        }
+    }
 };
 
-AnyFS.prototype.writeFile = function(p, options, cb) {
+AnyFS.prototype.writeFile = function(p, data, options, cb) {
     if (typeof options === 'function') {
         cb = options;
         options = undefined;
     }
 
     if (!cb) {
-        return this._promise(this.writeFile, p, options);
+        return this._promise(this.writeFile, p, data, options);
     }
 
     options = options || {};
     p = this.resolve(p);
 
-    this._writeFile(p, options, cb);
+    this._writeFile(p, data, options, cb);
 };
 
 AnyFS.prototype.createReadStream = function(p, options) {

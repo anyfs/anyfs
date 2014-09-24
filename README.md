@@ -6,7 +6,37 @@ AnyFS is an abstraction of local or remote file systems.
 
 ### `constructor(options)`
 
-### `metadata(path, callback)`
+### `metadata(path, options, callback)`
+
+Retrieves file and folder metadata.
+
+If the `list` option set to true, the folder's metadata will include a contents field with a list of metadata entries for the contents of the folder.
+
+Folder metadata:
+
+```js
+{
+    "modified": "Mon, 07 Apr 2014 23:13:16 +0000",
+    "is_dir": true,
+    "contents": [ 
+        ...
+    ],
+    "extra": {}
+}
+```
+
+File metadata:
+
+```js
+{
+    "modified": "Mon, 07 Apr 2014 23:13:16 +0000",
+    "is_dir": false,
+    "bytes": 123,
+    "extra": {}
+}
+```
+
+The `modified`, `bytes` and `extra` are optional.
 
 ### `mkdir(path, callback)`
 
