@@ -21,6 +21,6 @@
     "url": "https://github.com/anyfs/anyfs/issues"
   },
   "dependencies": {
-    "stream-content": "^0.1.0"
+    "stream-content": "^0.1.1"
   }
 }
