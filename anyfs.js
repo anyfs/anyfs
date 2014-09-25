@@ -177,13 +177,32 @@ AnyFS.prototype.createReadStream = function(p, options) {
         return this._createReadStream(p, options);
     } catch (e) {
         if (e instanceof NotImplementedError) {
-            return streamContent.createReadStream()
+            var self = this;
+            return streamContent.createReadStreamFromCallback(function(cb) {
+                self._readFile(p, options, cb);
+            });
+        } else {
+            throw e;
         }
     }
 };
 
 AnyFS.prototype.createWriteStream = function(p, options) {
+    p = this.resolve(p);
+    options = options || {};
 
+    try {
+        return this._createWriteStream(p, options);
+    } catch (e) {
+        if (e instanceof NotImplementedError) {
+            var self = this;
+            return streamContent.createWriteStreamFromCallback(function(content, cb) {
+                self._writeFile(p, content, options, cb);
+            });
+        } else {
+            throw e;
+        }
+    }
 };
 
 // Advanced API
