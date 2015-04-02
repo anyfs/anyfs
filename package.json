@@ -15,12 +15,17 @@
     "gulpplugin",
     "fs"
   ],
-  "author": "dong <ddliuhb@gmail.com>",
+  "author": "Liu Dong <ddliuhb@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/anyfs/anyfs/issues"
   },
   "dependencies": {
     "stream-content": "^0.1.1"
+  },
+  "devDependencies": {
+    "should": "^5.2.0",
+    "through2": "^0.6.3",
+    "when": "^3.7.2"
   }
 }

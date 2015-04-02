@@ -2,9 +2,21 @@
 
 AnyFS is an abstraction of local or remote file systems.
 
+## Concepts
+
+File and directory should have as few properties as possible. For example, permission, owner, atime are not necessarily to be concerned.
+
+API should support callback as well as promise.
+
+The abstract package defines interfaces and impletions implement them seperately to achieve an consistent and easy to test system.
+
 ## Basic API
 
 ### `constructor(options)`
+
+The constructor accepts only an options object. Some common options are shared between all adapters.
+
+- base: Base path of the file system.
 
 ### `metadata(path, options, callback)`
 
