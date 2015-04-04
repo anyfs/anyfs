@@ -1,7 +1,7 @@
 {
   "name": "anyfs",
   "version": "0.1.0",
-  "description": "AnyFS is an abstraction of local or remote file systems.",
+  "description": "Super portable file system.",
   "main": "anyfs.js",
   "scripts": {
     "test": "mocha"

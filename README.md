@@ -1,12 +1,24 @@
 # anyfs
 
-AnyFS is an abstraction of local or remote file systems.
+AnyFS is a portable file system solution.
 
-## Concepts
+Note: AnyFS is under heavy development, it's not usable yet. Any contributions 
+are welcome!
 
-File and directory should have as few properties as possible. For example, permission, owner, atime are not necessarily to be concerned.
+## Features
 
-API should support callback as well as promise.
+- Super portable
+- Works well with Gulp
 
-The abstract package defines interfaces and impletions implement them seperately to achieve an consistent and easy to test system.
+## Adapters
 
+This package comes with following adapters.
+
+- Memory: in memory file system
+- Local: local file system
+- Dropbox
+- FTP
+
+## API
+
+See [anyfs.abstract](https://github.com/anyfs/abstract)
