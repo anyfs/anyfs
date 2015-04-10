@@ -19,5 +19,10 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/anyfs/anyfs/issues"
+  },
+  "devDependencies": {
+    "anyfs.memory": "^0.1.2",
+    "gulp": "^3.8.11",
+    "gulp-changed": "^1.2.1"
   }
 }
