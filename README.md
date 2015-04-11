@@ -11,11 +11,13 @@ AnyFS is a portable file system solution.
 
 This package comes with following drivers.
 
-- [Memory](https://github.com/anyfs/memory): in memory file system
+- [Dropbox](https://github.com/anyfs/dropbox)
 - [FTP](https://github.com/anyfs/ftp)
+- [Memory](https://github.com/anyfs/memory): in memory file system
 - <del>[Local](https://github.com/anyfs/local): local file system</del>
-- <del>[Dropbox](https://github.com/anyfs/dropbox)</del>
 - <del>AWS S3</del>
+- <del>GIT</del>
+- <del>SVN</del>
 
 ## Usage
 
@@ -29,7 +31,9 @@ var fs1 = new FTPFS({
 });
 
 var fs2 = new DropboxFS({
-    // ...
+    key: 'appkey',
+    secret: 'appsecret',
+    token: 'token',
 });
 
 fs1.src('/**/*.jpg')
