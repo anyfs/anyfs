@@ -4,14 +4,15 @@ AnyFS is a portable file system solution.
 
 ## Features
 
-- Super portable
-- Works well with Gulp
+- Extensible with plugins
+- Super portable with file system adapters
+- Works well with Gulp (vinyl-fs plugin)
 
-## Drivers
+## Adapters
 
-This package comes with following drivers.
+AnyFS comes with following adapters.
 
-- [Dropbox](https://github.com/anyfs/dropbox)
+- [Dropbox](https://github.com/anyfs/dropbox-adapter) - NPM: anyfs-dropbox-adapter
 - [FTP](https://github.com/anyfs/ftp)
 - [Memory](https://github.com/anyfs/memory): in memory file system
 - <del>[Local](https://github.com/anyfs/local): local file system</del>
@@ -19,9 +20,17 @@ This package comes with following drivers.
 - <del>GIT</del>
 - <del>SVN</del>
 
+## Plugins
+
+- Core: builtin, basic filesystem support.
+- glob: match files easily.
+- vinyl-fs: vinyl-fs port, works well with gulp
+
 ## Usage
 
 ```js
+var anyfs = require('anyfs');
+anyfs.
 var FTPFS = require('anyfs.ftp');
 var Dropboxfs = require('anyfs.dropbox');
 var fs1 = new FTPFS({
