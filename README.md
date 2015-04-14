@@ -1,6 +1,11 @@
 # anyfs
 
-AnyFS is a portable file system solution.
+[![npm](https://img.shields.io/npm/v/anyfs.svg?style=flat-square)](https://www.npmjs.com/package/anyfs)
+[![npm](https://img.shields.io/npm/dm/anyfs.svg?style=flat-square)](https://www.npmjs.com/package/anyfs)
+[![Travis](https://img.shields.io/travis/anyfs/ftp.svg?style=flat-square)](https://travis-ci.org/anyfs/ftp)
+![npm](https://img.shields.io/npm/l/anyfs.svg?style=flat-square)
+
+AnyFS is a portable filesystem abstraction for Node.
 
 ## Features
 
@@ -31,7 +36,7 @@ AnyFS comes with following adapters.
 ```js
 var anyfs = require('anyfs');
 anyfs.
-var FTPFS = require('anyfs.ftp');
+var FTPFS = require('anyfs-ftp');
 var Dropboxfs = require('anyfs.dropbox');
 var fs1 = new FTPFS({
     server: 'ftp.example.com',

@@ -1,10 +1,10 @@
 {
   "name": "anyfs",
-  "version": "0.1.1",
-  "description": "Super portable file system.",
-  "main": "anyfs.js",
+  "version": "0.1.2",
+  "description": "Super portable filesystem.",
+  "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "./node_modules/mocha/bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,8 @@
   },
   "devDependencies": {
     "gulp": "^3.8.11",
-    "gulp-changed": "^1.2.1"
+    "gulp-changed": "^1.2.1",
+    "mocha": "^2.2.4"
   },
   "dependencies": {
     "should": "^5.2.0",
