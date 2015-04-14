@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/anyfs.svg?style=flat-square)](https://www.npmjs.com/package/anyfs)
 [![npm](https://img.shields.io/npm/dm/anyfs.svg?style=flat-square)](https://www.npmjs.com/package/anyfs)
-[![Travis](https://img.shields.io/travis/anyfs/ftp.svg?style=flat-square)](https://travis-ci.org/anyfs/ftp)
+[![Travis](https://img.shields.io/travis/anyfs/anyfs.svg?style=flat-square)](https://travis-ci.org/anyfs/anyfs)
 ![npm](https://img.shields.io/npm/l/anyfs.svg?style=flat-square)
 
 AnyFS is a portable filesystem abstraction for Node.
