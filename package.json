@@ -21,8 +21,13 @@
     "url": "https://github.com/anyfs/anyfs/issues"
   },
   "devDependencies": {
-    "anyfs.memory": "^0.1.2",
     "gulp": "^3.8.11",
     "gulp-changed": "^1.2.1"
+  },
+  "dependencies": {
+    "should": "^5.2.0",
+    "stream-content": "^0.1.2",
+    "through2": "^0.6.5",
+    "when": "^3.7.2"
   }
 }

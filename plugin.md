@@ -1,0 +1,2 @@
+# AnyFS Plugin Specification
+
