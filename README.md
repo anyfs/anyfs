@@ -28,27 +28,29 @@ AnyFS comes with following adapters.
 ## Plugins
 
 - Core: builtin, basic filesystem support.
-- glob: match files easily.
-- vinyl-fs: vinyl-fs port, works well with gulp
+- [glob](https://github.com/anyfs/glob-plugin): match files easily.
+- [vinyl-fs](https://github.com/anyfs/vinyl-fs-plugin): vinyl-fs port, works well with gulp
 
 ## Usage
 
 ```js
-var anyfs = require('anyfs');
-anyfs.
-var FTPFS = require('anyfs-ftp');
-var Dropboxfs = require('anyfs.dropbox');
-var fs1 = new FTPFS({
+var AnyFs = require('anyfs');
+var FtpAdapter = require('anyfs-ftp-adapter');
+var DropboxAdapter = require('anyfs-dropbox-adapter');
+var VinylFsPlugin = require('anyfs-vinyl-fs-plugin');
+AnyFS.addPlugin(new VinylFsPlugin());
+
+var fs1 = new AnyFS(new FtpAdapter({
     server: 'ftp.example.com',
     username: 'user',
     password: 'password',
-});
+}));
 
-var fs2 = new DropboxFS({
+var fs2 = new AnyFS(new DropboxAdapter({
     key: 'appkey',
     secret: 'appsecret',
     token: 'token',
-});
+}));
 
 fs1.src('/**/*.jpg')
     .pipe(fs2.dest('/backup/abc/'));
@@ -56,35 +58,29 @@ fs1.src('/**/*.jpg')
 
 ## API
 
-### Basic API
+### Core API
 
 Following APIs are basic file system APIs.
 
-#### `constructor(options)`
+#### `constructor(adapter, options)`
 
-The constructor accepts only an options object. Some common options are shared 
-between all adapters.
+The constructor accepts an adapter and an options object.
+
+Common options: 
 
 - cwd: Current working directory.
 
-#### `metadata(path[, options][, callback(error, metadata)])`
+#### `metadata(path[, callback(error, metadata)])`
 
 Retrieves file and folder metadata.
-
-If the `list` option set to true, the folder's metadata will include a contents 
-field with a list of metadata entries for the contents of the folder.
 
 Folder metadata:
 
 ```js
 {
     "name": "dir1",
-    "time": 1428648792000,
+    "time": [Date Object],
     "is_dir": true,
-    "children": [ 
-        ...
-    ],
-    ...
 }
 ```
 
@@ -93,15 +89,27 @@ File metadata:
 ```js
 {
     "name": "file1.txt",
-    "time": 1428648792,
+    "time": [Date Object],
     "is_dir": false,
     "size": 123,
     ...
 }
 ```
 
-Both `time` and `size` are optional. If callback is not provided, a promise is returned.
+If callback is not provided, a promise is returned.
 
+#### `list(path[, callback(error, list)])`
+
+Get contents of directory.
+
+```
+[
+    {
+        // metadata
+    },
+    ...
+]
+```
 
 #### `mkdir(path[, callback(error)])`
 
@@ -119,7 +127,7 @@ If callback is not provided, a promise is returned.
 
 Move file or directory to a new place.
 
-If parent folder of `newPath` is created automaticly.
+<del>If parent folder of `newPath` is created automaticly.</del>
 
 If callback is not provided, a promise is returned.
 
@@ -143,29 +151,10 @@ Create write stream.
 
 Create read stream.
 
-### Advanced API
+### Extra API
 
-Some advanced APIs.
+Extra APIs are supported by plugins
 
-#### `glob(pattern[, callback(err, files)])`
+## Create Custom Adapters
 
-Match files using the given patterns. See [glob](https://github.com/isaacs/node-glob).
-
-If callback is not provided, a glob stream is returned.
-
-#### `src(pattern[, options])`
-
-See [vinyl-fs](https://github.com/wearefractal/vinyl-fs).
-
-#### `dest(path)`
-
-See [vinyl-fs](https://github.com/wearefractal/vinyl-fs).
-
-## Create Custom Driver
-
-See the [abstract driver](https://github.com/anyfs/abstract)
-
-## TODO
-
-- `watch` API
-- More drivers
+## Create Plugins
