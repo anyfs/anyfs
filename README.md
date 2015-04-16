@@ -21,9 +21,9 @@ AnyFS comes with following adapters.
 
 - [Dropbox](https://github.com/anyfs/dropbox-adapter) - NPM: anyfs-dropbox-adapter
 - [FTP](https://github.com/anyfs/ftp-adapter) - NPM: anyfs-ftp-adapter
+- [AWS S3](https://github.com/anyfs/s3-adapter) - NPM: anyfs-s3-adapter
 - Memory - Builtin, assess with AnyFS.MemoryAdapter
 - <del>[Local](https://github.com/anyfs/local-adapter): local file system</del>
-- <del>[AWS S3](https://github.com/anyfs/s3-adapter)</del>
 - <del>GIT</del>
 - <del>SVN</del>
 
