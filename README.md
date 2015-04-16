@@ -5,7 +5,8 @@
 [![Travis](https://img.shields.io/travis/anyfs/anyfs.svg?style=flat-square)](https://travis-ci.org/anyfs/anyfs)
 ![npm](https://img.shields.io/npm/l/anyfs.svg?style=flat-square)
 
-AnyFS is a portable filesystem abstraction for Node.
+AnyFS is a portable filesystem abstraction for Node. It aims to provide a 
+consistent API for different file systems. 
 
 WARNING: AnyFS is under heavy development, things may change at any time!
 
