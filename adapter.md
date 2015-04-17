@@ -62,14 +62,26 @@ Errors:
 
 ### `delete(path, callback)`
 
+Delete file.
+
+Errors:
+
+- ENOENT: file or directory does not exist
+- EISDIR: path is a directory.
+
+### `deleteDir(path, callback)`
+
+Delete directory.
+
 Features:
 
 - DELETE_RECURSIVE
 
 Errors:
 
-- ENOENT: file or directory does not exist
-- EEXIST: directory not empty
+- ENOENT: directory does not exist.
+- EEXIST: directory not empty.
+- ENOTDIR: path is not a directory.
 
 ### `writeFile(path, data, callback)`
 

@@ -121,7 +121,13 @@ If callback is not provided, a promise is returned.
 
 #### `delete(path[, callback(error)])`
 
-Delete file or directory (recursively).
+Delete file.
+
+If callback is not provided, a promise is returned.
+
+#### `deleteDir(path[, callback(error)])`
+
+Delete directory recursively.
 
 If callback is not provided, a promise is returned.
 
@@ -129,7 +135,7 @@ If callback is not provided, a promise is returned.
 
 Move file or directory to a new place.
 
-<del>If parent folder of `newPath` is created automaticly.</del>
+Parent folder of `newPath` is created automaticly.
 
 If callback is not provided, a promise is returned.
 
