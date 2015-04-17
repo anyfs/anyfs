@@ -5,7 +5,8 @@
 [![Travis](https://img.shields.io/travis/anyfs/anyfs.svg?style=flat-square)](https://travis-ci.org/anyfs/anyfs)
 ![npm](https://img.shields.io/npm/l/anyfs.svg?style=flat-square)
 
-AnyFS is a portable filesystem abstraction for Node.
+AnyFS is a portable filesystem abstraction for Node. It aims to provide a 
+consistent API for different file systems. 
 
 WARNING: AnyFS is under heavy development, things may change at any time!
 
@@ -14,6 +15,7 @@ WARNING: AnyFS is under heavy development, things may change at any time!
 - Extensible with plugins
 - Super portable with file system adapters
 - Works well with Gulp (vinyl-fs plugin)
+- API with Promise support
 
 ## Adapters
 
@@ -22,8 +24,10 @@ AnyFS comes with following adapters.
 - [Dropbox](https://github.com/anyfs/dropbox-adapter) - NPM: anyfs-dropbox-adapter
 - [FTP](https://github.com/anyfs/ftp-adapter) - NPM: anyfs-ftp-adapter
 - [AWS S3](https://github.com/anyfs/s3-adapter) - NPM: anyfs-s3-adapter
-- Memory - Builtin, assess with AnyFS.MemoryAdapter
+- Memory - Builtin, assess with `AnyFS.MemoryAdapter`
 - <del>[Local](https://github.com/anyfs/local-adapter): local file system</del>
+- <del>SFTP</del>
+- <del>Baidu</del>
 - <del>GIT</del>
 - <del>SVN</del>
 
@@ -54,8 +58,32 @@ var fs2 = new AnyFS(new DropboxAdapter({
     token: 'token',
 }));
 
+// Copy files across filesystems(requires the vinyl-fs plugin)
 fs1.src('/**/*.jpg')
     .pipe(fs2.dest('/backup/abc/'));
+
+// Promise style API
+fs1.mkdir('/doc')
+    .then(function() {
+        return this.writeFile('/doc/index.md', "content");
+    })
+    .then(function() {
+        return this.metadata('/doc/index.md');
+    })
+    .done(function(metadata) {
+        console.log(metadata.size);
+    }, function(err) {
+        console.log('Error occured: ', err);
+    });
+
+// callback API
+fs.mkdir('/doc', function(err) {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log('mkdir ok');
+    }
+});
 ```
 
 ## API
