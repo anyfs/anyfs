@@ -64,6 +64,10 @@ Errors:
 
 Delete file.
 
+Features:
+
+- DELETE_IGNORE_EMPTY: Do not throw error if path does not exist.
+
 Errors:
 
 - ENOENT: file or directory does not exist
@@ -75,6 +79,7 @@ Delete directory.
 
 Features:
 
+- DELETE_IGNORE_EMPTY: Do not throw error if path does not exist.
 - DELETE_RECURSIVE
 
 Errors:
