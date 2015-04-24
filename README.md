@@ -9,7 +9,7 @@ AnyFS is a portable filesystem abstraction for Node. It aims to provide a
 consistent API for different file systems. 
 
 WARNING: AnyFS is under heavy development, things may change at any time!
-
+a
 ## Features
 
 - Extensible with plugins
@@ -24,7 +24,7 @@ AnyFS comes with following adapters.
 - [Dropbox](https://github.com/anyfs/dropbox-adapter) - NPM: anyfs-dropbox-adapter
 - [FTP](https://github.com/anyfs/ftp-adapter) - NPM: anyfs-ftp-adapter
 - [AWS S3](https://github.com/anyfs/s3-adapter) - NPM: anyfs-s3-adapter
-- Memory - Builtin, assess with `AnyFS.MemoryAdapter`
+- Memory - Builtin, access with `AnyFS.MemoryAdapter`
 - <del>[Local](https://github.com/anyfs/local-adapter): local file system</del>
 - <del>SFTP</del>
 - <del>Baidu</del>
