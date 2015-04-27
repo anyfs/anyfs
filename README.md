@@ -199,4 +199,6 @@ See [adapter specification](adapter.md)
 
 ## Acknowledgement
 
+Logo by [denjello](https://github.com/denjello)
+
 Inspired by [Flysystem](http://flysystem.thephpleague.com/)
